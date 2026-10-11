@@ -17,6 +17,8 @@ public sealed partial class AlchemyVesselComponent : Component
     [DataField] public float NigredoTemperature = 350;
     [DataField] public ProtoId<AlchemyOperationPrototype> HeatOperation = "Heat";
     [DataField] public ProtoId<AlchemyOperationPrototype> CoolOperation = "Cool";
+    [DataField] public float HeatCompletionTemperature = 313.15f;
+    [DataField] public float CoolCompletionTemperature = 293.15f;
     [DataField] public SoundSpecifier StepSound = new SoundPathSpecifier("/Audio/Effects/Chemistry/bubbles.ogg");
     [DataField] public bool Processing;
     [DataField] public bool Hot;

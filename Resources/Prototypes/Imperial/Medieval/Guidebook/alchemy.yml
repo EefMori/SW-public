@@ -4,8 +4,14 @@
   priority: 31
   text: "/ServerInfo/Imperial/Medieval/Guidebook/Alchemy.xml"
   children:
+  - MedievalAlchemyBasics
   - MedievalAlchemyPotions
   - MedievalAlchemyDrinks
+
+- type: guideEntry
+  id: MedievalAlchemyBasics
+  name: guide-entry-medieval-alchemy-basics
+  text: "/ServerInfo/Imperial/Medieval/Guidebook/AlchemyBasics.xml"
 
 - type: guideEntry
   id: MedievalAlchemyPotions

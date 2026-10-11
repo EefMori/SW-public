@@ -3238,6 +3238,7 @@
   storage:
     back:
     - MedievalRecipeBook
+    - MedievalAlchemyGuide
     - MedievalChemistryRecipe
     - MedievalChemistryRecipe
     - MedievalChemistryRecipe
@@ -3882,6 +3883,7 @@
   storage:
     back:
     - MedievalRecipeBook
+    - MedievalAlchemyGuide
     - MedievalChemistryRecipe
     - MedievalChemistryRecipe
     - MedievalChemistryRecipe
