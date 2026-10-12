@@ -113,6 +113,16 @@ public sealed class ObeliskDestroyableSystem : EntitySystem
 
     private void DestroyObelisk(EntityUid uid, ObeliskDestroyableComponent component)
     {
+        if (component.DestroyedAnnouncement is { } announcement)
+        {
+            _chat.DispatchGlobalAnnouncement(
+                Loc.GetString(announcement),
+                sender: Loc.GetString(component.AnnouncementSender),
+                playSound: true,
+                announcementSound: component.AnnouncementSound,
+                colorOverride: component.AnnouncementColor);
+        }
+
         if (component.DestroyedEffect is { } effect)
             Spawn(effect, Transform(uid).Coordinates);
 

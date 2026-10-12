@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server.Chat.Systems;
+using Content.Server.Cult.Components;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.GameTicking.Components;
@@ -38,12 +39,16 @@ public sealed class BlackSpireSpawnRuleSystem : GameRuleSystem<BlackSpireSpawnRu
         }
 
         var marker = _random.Pick(markers);
+        var transform = Transform(marker.Owner);
+        var sector = TryComp<CultMapBlockerComponent>(transform.ParentUid, out var blocker)
+            ? blocker.Sector
+            : string.Empty;
         _chat.DispatchGlobalAnnouncement(
-            Loc.GetString(component.Announcement),
+            Loc.GetString(component.Announcement, ("sector", sector)),
             playSound: true,
             colorOverride: Color.MediumPurple,
             sender: Loc.GetString(component.AnnouncementSender));
-        Spawn(component.SpirePrototype, Transform(marker.Owner).Coordinates);
+        Spawn(component.SpirePrototype, transform.Coordinates);
         marker.Comp.Used = true;
 
         GameTicker.EndGameRule(uid, gameRule);

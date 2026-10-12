@@ -53,6 +53,9 @@ public sealed partial class ObeliskDestroyableComponent : Component
     [DataField]
     public LocId DestroyedDescription = "medieval-faction-obelisk-destroyed-desc";
 
+    [DataField]
+    public LocId? DestroyedAnnouncement;
+
     [DataField(required: true)]
     public List<string> BaseLayerStates = new();
 
