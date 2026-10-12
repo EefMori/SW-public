@@ -12,9 +12,9 @@ public sealed partial class BlackSpireComponent : Component
     [DataField]
     public List<TimeSpan> StageDurations = new()
     {
-        TimeSpan.FromMinutes(5),
-        TimeSpan.FromMinutes(5),
-        TimeSpan.FromMinutes(5),
+        TimeSpan.FromMinutes(10),
+        TimeSpan.FromMinutes(10),
+        TimeSpan.FromMinutes(10),
     };
 
     [DataField]
@@ -30,7 +30,7 @@ public sealed partial class BlackSpireComponent : Component
     public float NeedsMultiplier = 1.3f;
 
     [DataField]
-    public float SkeletonChance = 0.1f;
+    public float SkeletonChance = 0.4f;
 
     [DataField]
     public EntProtoId WeakSkeleton = "MedievalMobSkeletWeak";

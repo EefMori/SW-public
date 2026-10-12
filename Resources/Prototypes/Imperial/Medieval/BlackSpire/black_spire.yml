@@ -56,11 +56,11 @@
       announcement: destroyed
       destroyOnReached: true
   - type: BlackSpire
-    stageDurations: [300, 300, 300]
+    stageDurations: [600, 600, 600]
     effectInterval: 300
     curseDuration: 300
-    needsMultiplier: 1.3
-    skeletonChance: 0.1
+    needsMultiplier: 1.5
+    skeletonChance: 0.4
     weakSkeleton: MedievalMobSkeletWeak
     characterSpawnMinRadius: 2
     characterSpawnMaxRadius: 4
