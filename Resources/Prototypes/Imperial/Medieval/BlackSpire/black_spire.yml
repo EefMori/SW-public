@@ -7,11 +7,11 @@
   components:
   - type: SpriteFade
   - type: Sprite
-    sprite: Imperial/Medieval/obelisks/layerobelisks.rsi
+    sprite: Imperial/Medieval/BlackSpire/black_spire.rsi
     drawdepth: Overdoors
     offset: 0,0.9
     layers:
-    - state: state-0
+    - state: base
       map: ["base"]
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -34,21 +34,24 @@
   - type: ObeliskDestroyable
     announcePhaseChanges: false
     deleteOnDestruction: true
-    invincibilityDuration: 60
-    destroyedEffect: MagicMedievalDarkness
+    invincibilityDuration: 1
+    invincibilityEndedSound:
+      path: /Audio/Imperial/Medieval/magic-break.ogg
+    destroyedEffect: MedievalSkeletDespawnEffect
+    destroyedLoot: MagicMedievalDarkness
     baseLayerStates:
-    - state-0
-    - state-1
-    - state-2
-    - state-2
-    outerLayerState: collegia
+    - base
+    - base2
+    - base3
+    outerLayerState: ""
+    invincibleOuterLayerState: ""
     phases:
     - threshold: 1000
       announcement: damaged
-    - threshold: 1000
-      announcement: damaged
+      invincibleBaseLayerState: base
     - threshold: 1000
       announcement: critical
+      invincibleBaseLayerState: base2
     - threshold: 1000
       announcement: destroyed
       destroyOnReached: true

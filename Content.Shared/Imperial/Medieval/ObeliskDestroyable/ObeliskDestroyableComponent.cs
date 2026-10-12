@@ -24,6 +24,9 @@ public sealed partial class ObeliskDestroyableComponent : Component
     public TimeSpan InvincibilityDuration = TimeSpan.FromMinutes(5);
 
     [DataField]
+    public SoundSpecifier? InvincibilityEndedSound;
+
+    [DataField]
     public bool AnnouncePhaseChanges = true;
 
     [DataField]
@@ -43,6 +46,9 @@ public sealed partial class ObeliskDestroyableComponent : Component
 
     [DataField]
     public EntProtoId? DestroyedEffect;
+
+    [DataField]
+    public EntProtoId? DestroyedLoot;
 
     [DataField]
     public LocId DestroyedDescription = "medieval-faction-obelisk-destroyed-desc";
@@ -71,6 +77,9 @@ public sealed partial class ObeliskDestroyablePhaseData
 
     [DataField(required: true)]
     public LocId Announcement = string.Empty;
+
+    [DataField]
+    public string? InvincibleBaseLayerState;
 
     [DataField]
     public bool DestroyOnReached;

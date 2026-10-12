@@ -10,6 +10,7 @@ using Content.Shared.Imperial.Medieval.CommsCharger;
 using Content.Shared.Imperial.Medieval.ObeliskDestroyable;
 using Content.Shared.Imperial.Medieval.Factions.Components;
 using Content.Shared.Imperial.Medieval.Achievements;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
 namespace Content.Server.Imperial.Medieval.ObeliskDestroyable;
@@ -22,6 +23,7 @@ public sealed class ObeliskDestroyableSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly TempInvincibilitySystem _tempInvincibility = default!;
     [Dependency] private readonly AchievementSystem _achievement = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -100,14 +102,22 @@ public sealed class ObeliskDestroyableSystem : EntitySystem
 
     private void OnTempInvincibilityEnded(EntityUid uid, ObeliskDestroyableComponent component, TempInvincibilityEndedEvent args)
     {
+        if (!component.InvincibilityActive)
+            return;
+
         component.InvincibilityActive = false;
         Dirty(uid, component);
+
+        _audio.PlayPvs(component.InvincibilityEndedSound, uid);
     }
 
     private void DestroyObelisk(EntityUid uid, ObeliskDestroyableComponent component)
     {
         if (component.DestroyedEffect is { } effect)
             Spawn(effect, Transform(uid).Coordinates);
+
+        if (component.DestroyedLoot is { } loot)
+            Spawn(loot, Transform(uid).Coordinates);
 
         if (component.DeleteOnDestruction)
         {
