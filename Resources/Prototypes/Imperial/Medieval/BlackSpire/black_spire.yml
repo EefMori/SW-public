@@ -64,7 +64,7 @@
     curseDuration: 300
     needsMultiplier: 1.5
     skeletonChance: 0.4
-    weakSkeleton: MedievalMobSkeletWeak
+    weakSkeleton: MedievalMobSkeletWeakSpell
     characterSpawnMinRadius: 2
     characterSpawnMaxRadius: 4
     radiationDamage:
