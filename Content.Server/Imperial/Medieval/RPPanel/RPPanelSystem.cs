@@ -22,7 +22,7 @@ public sealed class RPPanelSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<MobStateComponent, ComponentStartup>(OnMobStartup);
         SubscribeLocalEvent<MobMoverComponent, ComponentStartup>(OnMobMoverStartup);
-        SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
+        SubscribeLocalEvent<GhostComponent, ComponentInit>(OnGhostInit);
         SubscribeLocalEvent<RPPanelMemberComponent, RPPanelActionEvent>(OnAction);
     }
 
@@ -32,7 +32,7 @@ public sealed class RPPanelSystem : EntitySystem
             EnsureComp<RPPanelMemberComponent>(uid);
     }
 
-    private void OnGhostStartup(EntityUid uid, GhostComponent component, ComponentStartup args)
+    private void OnGhostInit(EntityUid uid, GhostComponent component, ComponentInit args)
     {
         RemComp<RPPanelMemberComponent>(uid);
     }
