@@ -184,6 +184,11 @@ public sealed partial class AlchemySystem : EntitySystem
         IReadOnlyList<EntityUid>? items = null, EntityUid? apparatus = null)
     {
         AlchemyRecipeSystem.RecordOperation(solution.Comp.Solution, operation, state.HistoryLimit);
+        if (operation == vessel.HeatOperation.Id)
+            solution.Comp.Solution.Temperature = vessel.HeatCompletionTemperature;
+        else if (operation == vessel.CoolOperation.Id)
+            solution.Comp.Solution.Temperature = vessel.CoolCompletionTemperature;
+        UpdateTemperatureState(vessel, solution.Comp.Solution);
         if (solution.Comp.Solution.Volume > 0)
             _audio.PlayPvs(vessel.StepSound, solution.Owner);
         if (items != null)
