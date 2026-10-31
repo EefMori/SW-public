@@ -585,7 +585,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
 
         var hitEvent = new MeleeHitEvent(targets, user, meleeUid, damage, null);
-        RaiseLocalEvent(meleeUid, hitEvent);
+        using (EntityManager.System<Content.Shared.Imperial.Medieval.Boss.SharedBossArenaRulesSystem>().WithSource(user, Content.Shared.Imperial.Medieval.Boss.BossArenaDamageKind.Melee))
+            RaiseLocalEvent(meleeUid, hitEvent);
 
         if (hitEvent.Handled)
             return;
@@ -755,7 +756,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         // Raise event before doing damage so we can cancel damage if the event is handled
         var hitEvent = new MeleeHitEvent(targets, user, meleeUid, damage, direction);
-        RaiseLocalEvent(meleeUid, hitEvent);
+        using (EntityManager.System<Content.Shared.Imperial.Medieval.Boss.SharedBossArenaRulesSystem>().WithSource(user, Content.Shared.Imperial.Medieval.Boss.BossArenaDamageKind.Melee))
+            RaiseLocalEvent(meleeUid, hitEvent);
 
         if (hitEvent.Handled)
             return true;
