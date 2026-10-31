@@ -1082,7 +1082,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         const float bufferLength = 0.2f;
         var visualLength = length - bufferLength;
 
-        if (localPos.Length() > visualLength)
+        if (Content.Shared.Imperial.Medieval.Weapons.MeleeSwingVisuals.IsSwingAnimation(animation))
+            localPos = localPos.Normalized() * length;
+        else if (localPos.Length() > visualLength)
             localPos = localPos.Normalized() * visualLength;
 
         DoLunge(user, weapon, angle, localPos, animation);
