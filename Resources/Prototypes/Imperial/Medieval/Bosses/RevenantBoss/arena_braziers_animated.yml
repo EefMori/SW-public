@@ -14,7 +14,7 @@
     scale: 0.5, 0.5
     offset: 0, 0.5
     layers:
-    - state: false
+    - state: off
       map:
       - empty
     - state: white
